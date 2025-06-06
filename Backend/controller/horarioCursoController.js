@@ -1,10 +1,10 @@
 const { connection } = require('../DataBase/DB');
 
-//funcion para pedir todo de la tabla alumnos
-const mostrarAlumnos = (req, res) => {
+//funcion para pedir todo de la tabla horario_curso
+const mostrarHorarioCurso = (req, res) => {
 
-    //consulta sql que trae todo de la tabla alumnos
-    const query = "SELECT * FROM alumnos;";
+    //consulta sql que trae todo de la tabla horario_curso
+    const query = "SELECT * FROM horario_curso;";
 
     //mostramos lo que devuelve la conexion
     connection.query(query, (err, results) => {
@@ -17,9 +17,8 @@ const mostrarAlumnos = (req, res) => {
         res.json(results);
     }
     )
-    
 }
 
 
 //exporto los resultados de las consultas
-module.exports = { mostrarAlumnos }
+module.exports = { mostrarHorarioCurso }

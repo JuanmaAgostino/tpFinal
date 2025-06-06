@@ -4,6 +4,11 @@ const {mostrarAlumnos} = require ('../controller/alumnosController');
 
 //rutas de los distintas cosas que puedo hacer con los alumnos
 
+// /alumnos es el nombre de la tabla a la que quiero ingresar
+
 router.get("/alumnos", mostrarAlumnos); //Muestro todos los alumnos
+
+
+
 
 module.exports = router;
