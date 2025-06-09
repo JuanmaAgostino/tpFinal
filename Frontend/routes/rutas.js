@@ -1,2 +1,9 @@
-//exporto las rutas
+//exporto las rutas de las páginas
 export const ALUMNOSPAGE ="/"
+
+//ruta localhost
+
+export const localhost = "http://localhost:3001"
+
+//ruta endpoints
+export const alumnosEndpoint ="/alumnos"
