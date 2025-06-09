@@ -4,7 +4,7 @@ const { connection } = require('../DataBase/DB');
 const mostrarAsistencia = (req, res) => {
 
     //consulta sql que trae todo de la tabla asistencia
-    const query = "SELECT * FROM asistencia;";
+    const query = "SELECT * FROM tpfinal.asistencia;";
 
     //mostramos lo que devuelve la conexion
     connection.query(query, (err, results) => {

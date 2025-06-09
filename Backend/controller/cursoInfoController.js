@@ -4,7 +4,7 @@ const { connection } = require('../DataBase/DB');
 const MostrarCursoinfo = (req, res) => {
 
     //consulta sql que trae todo de la tabla cursoinfo
-    const query = "SELECT * FROM cursoinfo;";
+    const query = "SELECT ci.idCursoInfo, ci.FechaInicio, ci.FechaFin, ci.Descripcion, c.Nombre AS NombreCurso FROM tpfinal.CursoInfo ci JOIN tpfinal.Curso c ON ci.Curso_idCurso = c.idCurso;";
 
     //mostramos lo que devuelve la conexion
     connection.query(query, (err, results) => {

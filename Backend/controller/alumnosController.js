@@ -4,7 +4,7 @@ const { connection } = require('../DataBase/DB');
 const mostrarAlumnos = (req, res) => {
 
     //consulta sql que trae todo de la tabla alumnos
-    const query = "SELECT * FROM alumnos;";
+    const query = "SELECT * FROM tpfinal.alumno;";
 
     //mostramos lo que devuelve la conexion
     connection.query(query, (err, results) => {

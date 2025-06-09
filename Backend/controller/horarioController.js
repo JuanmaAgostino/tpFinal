@@ -4,7 +4,7 @@ const { connection } = require('../DataBase/DB');
 const mostrarHorario = (req, res) => {
 
     //consulta sql que trae todo de la tabla horario
-    const query = "SELECT * FROM horario;";
+    const query = "SELECT * FROM tpfinal.horario;";
 
     //mostramos lo que devuelve la conexion
     connection.query(query, (err, results) => {
