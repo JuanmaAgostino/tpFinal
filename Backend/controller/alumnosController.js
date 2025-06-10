@@ -61,9 +61,9 @@ const eliminarAlumno = (req, res) => {
 
 const editarAlumno = (req, res) => {
     const { id } = req.params;
-    const { nombre, email, edad } = req.body;
+    const { nombre, apellido, Legajo } = req.body;
     const query = "UPDATE alumno SET nombre = ?, apellido = ?, Legajo = ? WHERE idAlumno = ?";
-    connection.query(query, [nombre, email, edad, id], (err) => {
+    connection.query(query, [nombre, apellido, Legajo, id], (err) => {
         if (err) {
             console.error("Error al actualizar alumno:", err);
             return res.status(500).json({ error: "Error al actualizar alumno" });
@@ -74,8 +74,8 @@ const editarAlumno = (req, res) => {
 
 const crearAlumno = (req, res) => {
     const { nombre, apellido, Legajo } = req.body;
-    
-    const query = "INSERT INTO alumno (nombre, apellido, Usuarios_idUsuario, Legajo) VALUES (?, ?, 7 , ?)";
+    //VER COMO INSERTAR EL ID DEL ALUMNO/
+    const query = "INSERT INTO alumno (nombre, apellido, Usuarios_idUsuario, Legajo) VALUES (?, ?, ? , ?)";
     connection.query(query, [nombre, apellido, Legajo], (err, result) => {
         if (err) {
             console.error("Error al crear alumno:", err);

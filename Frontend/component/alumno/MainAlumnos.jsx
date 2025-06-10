@@ -10,10 +10,14 @@ export default function MainAlumno() {
     buscarAlumnoPorId,
     crearAlumno,
     eliminarAlumno,
+    editarAlumno,
   } = useAlumnos();
 
   const [form, setForm] = useState({ nombre: "", apellido: "", Legajo: "" });
   const [idBuscar, setIdBuscar] = useState("");
+  const [modoEdicion, setModoEdicion] = useState(false);
+  const [idEditando, setIdEditando] = useState(null);
+
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -21,11 +25,18 @@ export default function MainAlumno() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    crearAlumno(form);
+  
+    if (modoEdicion) {
+      editarAlumno(idEditando, form);
+      setModoEdicion(false);
+      setIdEditando(null);
+    } else {
+      crearAlumno(form);
+    }
+  
     setForm({ nombre: "", apellido: "", Legajo: "" });
   };
-  console.log("alumnos", alumnos);
-  console.log("alumnoActual", alumnoActual);
+  
 
   return (
     <div>
@@ -36,11 +47,19 @@ export default function MainAlumno() {
       <ul>
         {alumnos.map((a) => (
           <li key={a.idAlumno}>
-            {a.nombre} - {a.apellido} - {a.Legajo} 
+            {a.nombre} - {a.apellido} - {a.Legajo}
             <button onClick={() => eliminarAlumno(a.idAlumno)}>Eliminar</button>
+            <button onClick={() => {
+              setForm({ nombre: a.nombre, apellido: a.apellido, Legajo: a.Legajo });
+              setIdEditando(a.idAlumno);
+              setModoEdicion(true);
+            }}>
+              Editar
+            </button>
           </li>
         ))}
       </ul>
+
 
       <h3>➕ Crear nuevo alumno</h3>
       <form onSubmit={handleSubmit}>

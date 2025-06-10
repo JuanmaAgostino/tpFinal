@@ -9,9 +9,7 @@ const { mostrarAlumnos, obtenerAlumnoPorId, eliminarAlumno, editarAlumno, crearA
 router.get("/alumnos", mostrarAlumnos); //Muestro todos los alumnos
 router.post("/alumnos/:id", obtenerAlumnoPorId);//Muestro el alumno con el id indicado
 router.delete("/alumnos/:id", eliminarAlumno);//Elimino al alumno por el id seleccionado
-
-//falta hacer
-router.put("/alumnos", editarAlumno); //edito el alumno indicado con el id
+router.put("/alumnos/:id", editarAlumno); //edito el alumno indicado con el id
 router.post("/alumnos/", crearAlumno); //creo un alumno
 
 
