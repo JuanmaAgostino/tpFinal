@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAlumnos } from "../../hooks/useAlumnos";
+import { useAlumnos } from "../../hooks/Alumnos/useAlumnos";
 
 export default function MainAlumno() {
   const {
@@ -24,6 +24,8 @@ export default function MainAlumno() {
     crearAlumno(form);
     setForm({ nombre: "", apellido: "", Legajo: "" });
   };
+  console.log("alumnos", alumnos);
+  console.log("alumnoActual", alumnoActual);
 
   return (
     <div>
@@ -33,9 +35,9 @@ export default function MainAlumno() {
 
       <ul>
         {alumnos.map((a) => (
-          <li key={a.id}>
-            {a.nombre} - {a.apellido} - {a.Legajo}
-            <button onClick={() => eliminarAlumno(a.id)}>Eliminar</button>
+          <li key={a.idAlumno}>
+            {a.nombre} - {a.apellido} - {a.Legajo} 
+            <button onClick={() => eliminarAlumno(a.idAlumno)}>Eliminar</button>
           </li>
         ))}
       </ul>
@@ -53,13 +55,14 @@ export default function MainAlumno() {
       <button onClick={() => buscarAlumnoPorId(idBuscar)}>Buscar</button>
 
       {alumnoActual && (
-        <div>
+        <div key={alumnoActual.idAlumno}>
           <h4>Alumno encontrado:</h4>
           <p>
-            {alumnoActual.nombre} - {alumnoActual.apellido} - Edad: {alumnoActual.Legajo}
+            {alumnoActual.nombre} - {alumnoActual.apellido} - Legajo: {alumnoActual.Legajo}
           </p>
         </div>
       )}
+
     </div>
   );
 }

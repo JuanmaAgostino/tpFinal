@@ -8,7 +8,7 @@ const mostrarAlumnos = (req, res) => {
 
     //mostramos lo que devuelve la conexion
     connection.query(query, (err, results) => {
-        console.log("resultados de la consulta: ", results)
+        // console.log("resultados de la consulta: ", results)
         if (err) {
             console.error("Error al obtener los alumnos: ", err);
             return res.status(500).json({ error: "Error al obtener los alumnos" });
@@ -22,25 +22,30 @@ const mostrarAlumnos = (req, res) => {
 
 const obtenerAlumnoPorId = (req, res) => {
     const { id } = req.params;
+    //console.log(id);
     const query = "SELECT * FROM tpfinal.alumno WHERE idAlumno  = ?";
 
     connection.query(query, [id], (err, results) => {
+        //console.log(id);
         if (err) {
+            // console.log(id);
             console.error("Error al obtener el alumno:", err);
             return res.status(500).json({ error: "Error al obtener el alumno" });
         }
 
         if (results.length === 0) {
+            // console.log(id);
             return res.status(404).json({ mensaje: "Alumno no encontrado" });
         }
 
-        res.json(results[0]); // Devuelve solo un objeto, no array
+        res.json(results); // Devuelve solo un objeto, no array
     });
 };
 
 const eliminarAlumno = (req, res) => {
     const { id } = req.params;
-    const query = "DELETE * FROM tpfinal.alumno WHERE idAlumno= ?"
+   
+    const query = "DELETE FROM tpfinal.alumno WHERE idAlumno= ?"
 
     connection.query(query, [id], (err, results) => {
         if (err) {

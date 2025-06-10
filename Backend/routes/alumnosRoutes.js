@@ -7,8 +7,8 @@ const { mostrarAlumnos, obtenerAlumnoPorId, eliminarAlumno, editarAlumno, crearA
 // /alumnos es el nombre de la tabla a la que quiero ingresar
 
 router.get("/alumnos", mostrarAlumnos); //Muestro todos los alumnos
-router.get("/alumnos", obtenerAlumnoPorId);//Muestro el alumno con el id indicado
-router.delete("/alumnos", eliminarAlumno);//Elimino al alumno por el id seleccionado
+router.post("/alumnos/:id", obtenerAlumnoPorId);//Muestro el alumno con el id indicado
+router.delete("/alumnos/:id", eliminarAlumno);//Elimino al alumno por el id seleccionado
 router.put("/alumnos", editarAlumno); //edito el alumno indicado con el id
 router.post("/alumnos", crearAlumno); //creo un alumno
 

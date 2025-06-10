@@ -1,6 +1,6 @@
 import React from 'react'
-import HeaderAlumnos from '../component/alumno/HeaderAlumnos'
-import FooterAlumnos from '../component/alumno/FooterAlumnos'
+import Header from '../component/componentGenerales/Header'
+import Footer from '../component/componentGenerales/Footer'
 import MainAlumnos from '../component/alumno/MainAlumnos'
 
 
@@ -8,9 +8,9 @@ import MainAlumnos from '../component/alumno/MainAlumnos'
 const AlumnoPage = () => {
   return (
     <>
-    <HeaderAlumnos/>
+    <Header/>
     <MainAlumnos/>
-    <FooterAlumnos/>
+    <Footer/>
     </>
   )
 }

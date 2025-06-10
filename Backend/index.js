@@ -45,24 +45,6 @@ app.use("/",pagoRoutes);
 
 app.use("/",asistenciaRoutes);
 
-
-// Conexión a la base de datos
-const db = mysql.createConnection({
-  host: '127.0.0.1',
-  user: 'root',
-  password: '', 
-  database: 'tpfinal'
-});
-
-//Mensaje por si falla la conexión a la base de datos
-db.connect((err) => {
-  if (err) {
-    console.error('Error al conectar a la base de datos:', err);
-  } else {
-    console.log('Conectado a la base de datos MySQL');
-  }
-});
-
 //muestro un mensaje que el servidor esta funcionando
 app.get('/', (req, res) => {
   res.send('Servidor funcionando');
