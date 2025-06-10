@@ -44,7 +44,7 @@ const obtenerAlumnoPorId = (req, res) => {
 
 const eliminarAlumno = (req, res) => {
     const { id } = req.params;
-   
+
     const query = "DELETE FROM tpfinal.alumno WHERE idAlumno= ?"
 
     connection.query(query, [id], (err, results) => {
@@ -62,7 +62,7 @@ const eliminarAlumno = (req, res) => {
 const editarAlumno = (req, res) => {
     const { id } = req.params;
     const { nombre, email, edad } = req.body;
-    const query = "UPDATE alumno SET nombre = ?, apellido = ?, Lsegajo = ? WHERE idAlumno = ?";
+    const query = "UPDATE alumno SET nombre = ?, apellido = ?, Legajo = ? WHERE idAlumno = ?";
     connection.query(query, [nombre, email, edad, id], (err) => {
         if (err) {
             console.error("Error al actualizar alumno:", err);
@@ -73,10 +73,10 @@ const editarAlumno = (req, res) => {
 };
 
 const crearAlumno = (req, res) => {
-    const { nombre, email, edad } = req.body;
-    //verificar bien el nombre de los atributos 
-    const query = "INSERT INTO alumno (nombre, apellido, Legajo) VALUES (?, ?, ?)";
-    connection.query(query, [nombre, email, edad], (err, result) => {
+    const { nombre, apellido, Legajo } = req.body;
+    
+    const query = "INSERT INTO alumno (nombre, apellido, Usuarios_idUsuario, Legajo) VALUES (?, ?, 7 , ?)";
+    connection.query(query, [nombre, apellido, Legajo], (err, result) => {
         if (err) {
             console.error("Error al crear alumno:", err);
             return res.status(500).json({ error: "Error al crear alumno" });

@@ -44,9 +44,11 @@ export function useAlumnos() {
 
     //agregar alumno nuevo
     const crearAlumno = async (nuevoAlumno) => {
+
         try {
+
             await axios.post(API_URL, nuevoAlumno);
-            console.log(nuevoAlumno.nombre);
+            
             fetchAlumnos();
         } catch (err) {
             setError("Error al crear alumno");
