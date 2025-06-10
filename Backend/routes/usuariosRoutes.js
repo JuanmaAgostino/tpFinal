@@ -1,14 +1,9 @@
-const express = require ('express');
+const express = require('express');
 const router = express.Router();
-const {mostrarUsuarios} = require('../controller/usuarioController');
+const { loginUsuario } = require('../controller/usuarioController');
 
-//rutas de los distintas cosas que puedo hacer con los alumnos
+router.post("/login", loginUsuario); // POST /usuarios/login
 
-// /usuarios es el nombre de la tabla a la que quiero ingresar
-
-router.get("/usuarios", mostrarUsuarios); //Muestro todos los alumnos
-
-
-
+//hacer una para buscar por id y guardar en el zustand!!!!!!!!!!!!!!!!!!!!!!
 
 module.exports = router;

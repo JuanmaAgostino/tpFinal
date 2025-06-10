@@ -29,8 +29,7 @@ app.use("/",horarioCursoRoutes);
 app.use("/",horarioRoutes);
 
 //usuarios
-app.use("/",usuariosRoutes);
-
+app.use("/usuarios",usuariosRoutes);
 //docente
 app.use("/",docenteRoutes);
 //inscripcion
@@ -38,11 +37,7 @@ app.use("/",inscripcionRoutes);
 app.use("/",docenteCursoRoutes);
 //pago
 app.use("/",pagoRoutes);
-
-
-
-
-
+//asistencia
 app.use("/",asistenciaRoutes);
 
 //muestro un mensaje que el servidor esta funcionando

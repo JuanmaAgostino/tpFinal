@@ -1,24 +1,22 @@
 const { connection } = require('../DataBase/DB');
 
-    //funcion para pedir todo de la tabla pago
-const mostrarUsuarios = (req, res) => {
+const loginUsuario = (req, res) => {
+    const { Usuario, Contraseña } = req.body;
 
-    //consulta sql que trae todo de la tabla pago
-    const query = "SELECT * FROM usuarios;";
-
-    //mostramos lo que devuelve la conexion
-    connection.query(query, (err, results) => {
-        console.log("resultados de la consulta: ", results)
+    const query = "SELECT * FROM usuarios WHERE Usuario = ? AND Contraseña = ?";
+    connection.query(query, [Usuario, Contraseña], (err, results) => {
         if (err) {
-            console.error("Error al obtener los usuarios: ", err);
-            return res.status(500).json({ error: "Error al obtener los usuarios" });
+            console.error("Error en login:", err);
+            return res.status(500).json({ error: "Error al procesar login" });
         }
-        //devuelvo los resultados de la query de la tabla
-        res.json(results);
-    }
-    )
-}
 
+        if (results.length === 0) {
+            return res.status(401).json({ error: "Credenciales incorrectas" });
+        }
 
-//exporto los resultados de las consultas
-module.exports = { mostrarUsuarios }
+        const usuario = results[0];
+        res.status(200).json({ mensaje: "Login exitoso", usuario });
+    });
+};
+
+module.exports = { loginUsuario };
