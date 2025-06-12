@@ -26,6 +26,8 @@ export function useLogin() {
       } else if (usuario.Rol === "docente") {
         setUsuario(usuario);
         navigate(DOCENTESPAGE);
+      } else if (usuario.Rol === "admin") {
+        navigate(ADMINPAGE);
       } else {
         setError("Rol desconocido");
       }

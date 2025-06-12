@@ -1,15 +1,11 @@
-import React from "react";
-import { useUserStore } from "../../context/guardarIdYRol";
+import React from 'react'
+import AlumnoCursoPage from '../cursos/AlumnoCursoPage'
 
-export default function MainAlumnos() {
-  
-  const { id, nombre, rol } = useUserStore();
-
+const MainAlumnos = () => {
   return (
     <div>
-      <h1>Bienvenido, {nombre}</h1>
-      <p>ID: {id}</p>
-      <p>Rol: {rol}</p>
+      <AlumnoCursoPage />
     </div>
-  );
+  )
 }
+return MainAlumnos;
