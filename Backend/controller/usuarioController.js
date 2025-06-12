@@ -3,7 +3,7 @@ const { connection } = require('../DataBase/DB');
 const loginUsuario = (req, res) => {
     const { Usuario, Contraseña } = req.body;
 
-    const query = "SELECT * FROM usuarios WHERE Usuario = ? AND Contraseña = ?";
+    const query = "SELECT idUsuario, Usuario, Rol FROM tpfinal.usuarios WHERE Usuario = ? AND Contraseña = ?";
     connection.query(query, [Usuario, Contraseña], (err, results) => {
         if (err) {
             console.error("Error en login:", err);
