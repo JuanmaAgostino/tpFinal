@@ -4,8 +4,9 @@ import AlumnoCursoPage from '../cursos/AlumnoCursoPage'
 const MainAlumnos = () => {
   return (
     <div>
-      <AlumnoCursoPage />
+    <AlumnoCursoPage/>
     </div>
   )
 }
-return MainAlumnos;
+
+export default MainAlumnos
