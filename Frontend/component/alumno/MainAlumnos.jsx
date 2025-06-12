@@ -1,8 +1,11 @@
 import React from 'react'
+import AlumnoCursoPage from '../cursos/AlumnoCursoPage'
 
 const MainAlumnos = () => {
   return (
-    <div>soy main alumnos</div>
+    <div>
+    <AlumnoCursoPage/>
+    </div>
   )
 }
 

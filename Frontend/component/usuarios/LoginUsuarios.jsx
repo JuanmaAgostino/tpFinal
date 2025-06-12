@@ -58,9 +58,11 @@ export default function Login() {
 
       <div className="info-section">
         <img src={logo} alt="Logo del Instituto" className="info-logo" />
-        <h1>Bienvenido a la Plataforma del Instituto</h1>
+        <h1>Bienvenido a SmartLab Educación Digital</h1>
         <p>
-          Accede al sistema para gestionar estudiantes, docentes y tus actividades institucionales.
+          Formación inteligente para una era digital
+          <br />
+          Donde la educación se encuentra con la innovación.
         </p>
       </div>
     </div>

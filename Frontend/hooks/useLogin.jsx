@@ -1,7 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { ALUMNOSPAGE, DOCENTESPAGE, localhost, usuariosEndpoint, loginEndpoint } from "../routes/rutas";
+import { ALUMNOSPAGE, DOCENTESPAGE, localhost, usuariosEndpoint, loginEndpoint, ADMINPAGE } from "../routes/rutas";
+
 
 // URL base y endpoint
 const API_URL = `${localhost}${usuariosEndpoint}${loginEndpoint}`;
@@ -20,6 +21,8 @@ export function useLogin() {
         navigate(ALUMNOSPAGE);
       } else if (usuario.Rol === "docente") {
         navigate(DOCENTESPAGE);
+      } else if (usuario.Rol === "admin") {
+        navigate(ADMINPAGE);
       } else {
         setError("Rol desconocido");
       }

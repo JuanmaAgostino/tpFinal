@@ -34,7 +34,7 @@ export default function MainAlumno() {
       crearAlumno(form);
     }
   
-    setForm({ nombre: "", apellido: "", Legajo: "" });
+    setForm({ nombre: "", apellido: "", Legajo: "", });
   };
   
 
@@ -47,7 +47,7 @@ export default function MainAlumno() {
       <ul>
         {alumnos.map((a) => (
           <li key={a.idAlumno}>
-            {a.nombre} - {a.apellido} - {a.Legajo}
+            {a.nombre} - {a.apellido} - {a.Legajo} 
             <button onClick={() => eliminarAlumno(a.idAlumno)}>Eliminar</button>
             <button onClick={() => {
               setForm({ nombre: a.nombre, apellido: a.apellido, Legajo: a.Legajo });
@@ -66,6 +66,7 @@ export default function MainAlumno() {
         <input name="nombre" placeholder="Nombre" value={form.nombre} onChange={handleChange} />
         <input name="apellido" placeholder="apellido" value={form.apellido} onChange={handleChange} />
         <input name="Legajo" type="number" placeholder="Legajo" value={form.Legajo} onChange={handleChange} />
+         <input name="idUsuario" placeholder="idUsuario" value={form.apellido} onChange={handleChange} />
         <button type="submit">Crear</button>
       </form>
 
