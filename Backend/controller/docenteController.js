@@ -19,6 +19,20 @@ const { connection } = require('../DataBase/DB');
     )
 }
 
+const crearDocente = (req, res) => {
+    const { nombre, apellido} = req.body;
+    //VER COMO INSERTAR EL ID DEL USUARIO//
+    
+    const query = "INSERT INTO docente (nombre, apellido, Usuarios_idUsuario) VALUES (?, ?, ?)";
+    connection.query(query, [nombre, apellido], (err, result) => {
+        if (err) {
+            console.error("Error al crear alumno:", err);
+            return res.status(500).json({ error: "Error al crear alumno" });
+        }
+        res.status(201).json({ mensaje: "Alumno creado correctamente", id: result.insertId });
+    });
+};
+
 
 //exporto los resultados de las consultas
 module.exports = { mostrarDocente }

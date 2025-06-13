@@ -73,10 +73,11 @@ const editarAlumno = (req, res) => {
 };
 
 const crearAlumno = (req, res) => {
-    const { nombre, apellido, Legajo } = req.body;
-    //VER COMO INSERTAR EL ID DEL ALUMNO/
-    const query = "INSERT INTO alumno (nombre, apellido, Usuarios_idUsuario, Legajo) VALUES (?, ?, ? , ?)";
-    connection.query(query, [nombre, apellido, Legajo], (err, result) => {
+    const { nombre, apellido } = req.body;
+    //VER COMO INSERTAR EL ID DEL USUARIO//
+
+    const query = "INSERT INTO alumno (nombre, apellido, Usuarios_idUsuario) VALUES (?, ?, ?)";
+    connection.query(query, [nombre, apellido], (err, result) => {
         if (err) {
             console.error("Error al crear alumno:", err);
             return res.status(500).json({ error: "Error al crear alumno" });
