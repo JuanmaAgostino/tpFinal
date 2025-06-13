@@ -4,9 +4,11 @@ import { useCursos } from "../../hooks/cursos/useCursos";
 export default function CursoPage() {
   const {
     cursos,
+    cursoDocente,
     error,
     loading,
     inscribirseEnCurso,
+    obtenerDocentesPorCurso
   } = useCursos();
 
   const [alumnoId, setAlumnoId] = useState(null);
@@ -27,12 +29,12 @@ export default function CursoPage() {
       <ul>
         {cursos.map((curso) => (
           <li key={curso.id}>
-            {curso.Nombre} - {curso.Descripcion} - {curso.Cupo} - {curso.Docente}
+            {curso.Nombre} - {curso.Materias} - {curso.Titulo} - {curso.Proyecto}
             <button
               style={{ marginLeft: "10px" }}
               onClick={() => {
                 // Aquí podrías redirigir a una página de detalles del curso
-                alert(`Detalles del curso: ${curso.Materias} - ${curso.Cupo} - ${curso.Docente}`);
+                alert(`Detalles del curso: ${curso.Materias} - ${curso.Materias} - ${curso.Proyecto}`);
               }}
             >
               Ver Detalles
@@ -49,6 +51,13 @@ export default function CursoPage() {
             >
               Inscribirse
             </button>
+          </li>
+        ))}
+      </ul>
+      <ul>
+        {cursoDocente.map((docente) => (
+          <li key={docente.idCursoInfo}>
+            Curso: {docente.nombreCurso} - Docente: {docente.nombreDocente} {docente.apellidoDocente}
           </li>
         ))}
       </ul>

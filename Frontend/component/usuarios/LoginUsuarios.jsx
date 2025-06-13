@@ -5,11 +5,9 @@ import logo from '../../src/img/logo.jpg';
 import usuarioicono from '../../src/img/usuario.jpg';
 
 
-
-
-
 // Componente principal Login
 export default function Login() {
+
   // Estado para guardar los valores del formulario (usuario y contraseña)
   const [form, setForm] = useState({ Usuario: "", Contraseña: "" });
 

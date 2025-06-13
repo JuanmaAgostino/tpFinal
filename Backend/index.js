@@ -32,6 +32,10 @@ app.use("/",horarioRoutes);
 app.use("/usuarios",usuariosRoutes);
 //docente
 app.use("/",docenteRoutes);
+
+//docente_curso
+app.use("/docente-curso",docenteCursoRoutes);
+
 //inscripcion
 app.use("/",inscripcionRoutes);
 app.use("/",docenteCursoRoutes);

@@ -1,11 +1,12 @@
 import axios from "axios";
-import { cursosEndpoint, localhost } from "../../routes/rutas";
+import { cursosEndpoint, localhost, horarioCursoEndpoint, docentesEndpoint } from "../../routes/rutas";
 import { useState, useEffect } from "react";
 
 const API_URL = `${localhost}${cursosEndpoint}`;
 console.log(API_URL);
 export function useCursos() {
     const [cursos, setCursos] = useState([]);
+    const [cursoDocente, setCursoDocente] = useState(null);
     const [cursoActual, setCursoActual] = useState(null);
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
@@ -89,12 +90,25 @@ export function useCursos() {
         }
     };
 
+    // Informacion de docentes que dan el curso
+    const obtenerDocentesPorCurso = async () => {
+        try {
+            console.log(`${API_URL}`)
+            const res = await axios.get(`${API_URL}${horarioCursoEndpoint}${docentesEndpoint}`);
+            setCursoDocente(res.data[0]);
+        } catch (err) {
+            setError("Error al obtener docentes del curso");
+            return [];
+        }
+    };
+
     useEffect(() => {
         fetchCursos();
     }, []);
 
     return {
         cursos,
+        cursoDocente,
         cursoActual,
         error,
         loading,
@@ -104,5 +118,6 @@ export function useCursos() {
         editarCurso,
         eliminarCurso,
         inscribirseEnCurso,
+        obtenerDocentesPorCurso,
     };
 }
