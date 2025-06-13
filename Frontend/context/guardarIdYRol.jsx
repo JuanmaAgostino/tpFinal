@@ -21,7 +21,7 @@ export const useUserStore = create((set) => ({
        
     },
 
-    // Función para limpiar usuario (ej: logout)
+    //Función para hacer logout
     limpiarUsuario: () => {
         set({
             id: null,
