@@ -17,13 +17,12 @@ const HeaderAlumnos = () => {
     // Si presiono el botón, limpio el zustand y redirecciono
     const handleLogout = () => {
         limpiarUsuario();
-        localStorage.removeItem("usuario"); // opcional si guardaste algo
+        localStorage.removeItem("usuario"); 
         navigate(LOGINPAGE);
     };
 
     return (
-        //agregar un boton de cerrar sesión que vuelva al estado inicial el zustand
-
+      
         <div>
             <header style={{ backgroundImage: `url(${fondoHeader})` }}>
                 <button onClick={handleLogout}>Cerrar sesión</button>

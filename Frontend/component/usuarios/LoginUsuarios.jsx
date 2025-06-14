@@ -29,7 +29,7 @@ export default function Login() {
     // Contenedor principal que divide la pantalla en dos
     <div className="login-container">
       <div className="login-section">
-        <img src={usuarioicono} alt="icono de usuario" class="usericono" />
+        <img src={usuarioicono} alt="icono de usuario" className="usericono" />
         <h2>Iniciar Sesión</h2>
         {error && <p className="error">{error}</p>}
         <form onSubmit={handleSubmit}>

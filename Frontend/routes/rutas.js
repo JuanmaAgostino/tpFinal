@@ -5,6 +5,7 @@ export const DOCENTESPAGE = "/DocentePage";
 export const LOGINPAGE = "/";
 export const ADMINPAGE = "/AdminPage";
 export const TESOREROPAGE = "/TesoreroPage"; 
+
 //ruta localhost
 export const localhost = "http://localhost:3001"
 

@@ -118,6 +118,6 @@ export function useCursos() {
         editarCurso,
         eliminarCurso,
         inscribirseEnCurso,
-        obtenerDocentesPorCurso,
+        obtenerDocentesPorCurso
     };
 }

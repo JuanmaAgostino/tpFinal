@@ -1,6 +1,6 @@
 import React from 'react'
 
-const loginHeader = () => {
+const LoginHeader = () => {
     return (
         //la diferencia entre el headerLogin y el header que usamos en el resto de las paginas
         // es que no tiene un boton de cerrar sesión
@@ -8,4 +8,4 @@ const loginHeader = () => {
     )
 }
 
-export default loginHeader
+export default LoginHeader
