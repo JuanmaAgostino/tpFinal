@@ -1,23 +1,32 @@
 const { connection } = require('../DataBase/DB');
 
-//funcion para pedir todo de la tabla curso_alumnos
-const mostrarCursoAlumnos = (req, res) => {
+const mostrarCursosPorAlumno = (req, res) => {
+    const idAlumno = req.params.idAlumno; // recibo idAlumno por params
 
-    //consulta sql que trae todo de la tabla curso_alumnos
-    const query = "SELECT * FROM curso_alumnos;";
+    const query = `
+    SELECT
+      a.nombre AS nombreAlumno,
+      a.apellido AS apellidoAlumno,
+      a.Legajo,
+      c.Nombre AS nombreCurso,
+      c.Titulo,
+      ci.FechaInicio,
+      ci.FechaFin
+    FROM inscripcion i
+    JOIN curso_alumnos ca ON i.idCursoAlumno = ca.idCursoAlumno
+    JOIN alumno a ON ca.idAlumno = a.idAlumno
+    JOIN curso_info ci ON ca.idCursoInfo = ci.idCursoInfo
+    JOIN curso c ON ci.idCurso = c.idCurso
+    WHERE a.idAlumno = ?;
+  `;
 
-    //mostramos lo que devuelve la conexion
-    connection.query(query, (err, results) => {
-        console.log("resultados de la consulta: ", results)
+    connection.query(query, [idAlumno], (err, results) => {
         if (err) {
-            console.error("Error al obtener los alumnos: ", err);
-            return res.status(500).json({ error: "Error al obtenr los Cursos y Alumnos" });
+            console.error("Error al obtener cursos por alumno:", err);
+            return res.status(500).json({ error: "Error al obtener cursos por alumno" });
         }
-        //devuelvo los resultados de la query de la tabla
         res.json(results);
-    }
-    )
-}
+    });
+};
 
-//exporto los resultados de las consultas
-module.exports = { mostrarCursoAlumnos }
+module.exports = { mostrarCursosPorAlumno };

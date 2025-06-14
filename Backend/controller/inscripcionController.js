@@ -8,7 +8,7 @@ const mostrarInscripciones = (req, res) => {
 
     //mostramos lo que devuelve la conexion
     connection.query(query, (err, results) => {
-        console.log("resultados de la consulta: ", results)
+
         if (err) {
             console.error("Error al obtener las inscripciones: ", err);
             return res.status(500).json({ error: "Error al obtener los inscripciones" });
@@ -19,6 +19,24 @@ const mostrarInscripciones = (req, res) => {
     )
 }
 
+//funcion para inscribir al alumno
+const inscribir = (req, res) => {
+    const { idUsuario, idCursoInfo, idPago } = req.body;
+
+    console.log("Voy a inscribir con:", { idUsuario, idCursoInfo, idPago });
+    
+    const query = `CALL InscribirAlumnoEnCurso_ConUsuario(?, ?, ?)`;
+    connection.query(query, [idUsuario, idCursoInfo, idPago], (err, results) => {
+        if (err) {
+
+            console.error("Error al realizar la inscripcion", err);
+            return res.status(500).json({ error: "error al realizar la inscripcion" });
+        }
+        res.json({ message: "Inscripción exitosa", results });
+    });
+};
+
+
 
 //exporto los resultados de las consultas
-module.exports = { mostrarInscripciones }
+module.exports = { mostrarInscripciones, inscribir }

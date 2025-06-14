@@ -1,17 +1,19 @@
 import axios from "axios";
-import { cursosEndpoint, localhost, horarioCursoEndpoint, docentesEndpoint } from "../../routes/rutas";
+import { cursosEndpoint, localhost, horarioCursoEndpoint, docentesEndpoint, cursoInfoEndpoint } from "../../routes/rutas";
 import { useState, useEffect } from "react";
 
 const API_URL = `${localhost}${cursosEndpoint}`;
-console.log(API_URL);
+
 export function useCursos() {
     const [cursos, setCursos] = useState([]);
     const [cursoDocente, setCursoDocente] = useState(null);
     const [cursoActual, setCursoActual] = useState(null);
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
+    const [cursoInfo, setCursoInfo] = useState([]);
+    const [cursosAlumno, setCursosAlumno] = useState([]); // 👈 ESTADO BIEN NOMBRADO
 
-    //mostrar todos
+    // Mostrar todos los cursos
     const fetchCursos = async () => {
         setLoading(true);
         try {
@@ -29,78 +31,55 @@ export function useCursos() {
         }
     };
 
-    // mostrar por id
-    const buscarCursoPorId = async (id) => {
+    // Mostrar info detallada de cursos
+    const CursoInfo = async () => {
+        setLoading(true);
         try {
-            const res = await axios.post(`${API_URL}/${id}`);
-
-            //console.log("Resultado buscarCursoPorId:", res.data);
-
-            setCursoActual(res.data[0]);
-
+            const res = await axios.get(`${localhost}${cursoInfoEndpoint}`);
+            if (Array.isArray(res.data)) {
+                setCursoInfo(res.data);
+            } else {
+                setCursoInfo([]);
+                setError("Respuesta inesperada del servidor");
+            }
         } catch (err) {
-            setError("Curso no encontrado");
+            setError("Error al obtener curso info");
+        } finally {
+            setLoading(false);
         }
     };
 
-    //agregar curso nuevo
-    const crearCurso = async (nuevoCurso) => {
-
+    // Mostrar cursos de un alumno
+    const getCursosAlumno = async (idAlumno) => {
+        setLoading(true);
         try {
-
-            await axios.post(API_URL, nuevoCurso);
-
-            fetchCursos();
+            const res = await axios.get(`${localhost}/cursos/alumno/${idAlumno}`);
+            setCursosAlumno(res.data);
         } catch (err) {
-            setError("Error al crear curso");
+            setError("Error al obtener cursos del alumno");
+            console.error(err);
+        } finally {
+            setLoading(false);
         }
     };
 
-    //edito al curso
-    const editarCurso = async (id, cursoEditado) => {
-
+    // Inscribir alumno en curso
+    const inscribirEnCursoInfo = async (idUsuario, idCursoInfo) => {
         try {
-            await axios.put(`${API_URL}/${id}`, cursoEditado);
-            fetchCursos();
+            await axios.post(`${localhost}${cursoInfoEndpoint}/inscribir`, {
+                idUsuario,
+                idCursoInfo,
+                idPago: null
+            });
+            alert("Inscripción realizada correctamente");
         } catch (err) {
-            setError("Error al editar alumno");
-        }
-    };
-
-
-   // Inscribir alumno en curso
-    const inscribirseEnCurso = async (alumnoId, cursoId) => {
-        try {
-            // Ajusta la URL según tu backend
-            await axios.post(`${API_URL}/${cursoId}/inscribir`, { alumnoId });
-            // Opcional: recargar cursos o mostrar mensaje de éxito
-            fetchCursos();
-        } catch (err) {
+            console.error(err);
             setError("No se pudo inscribir al curso");
         }
     };
 
-    //elimino al curso
-    const eliminarCurso = async (id) => {
-        try {
-            await axios.delete(`${API_URL}/${id}`);
-            fetchCursos();
-        } catch (err) {
-            setError("Error al eliminar curso");
-        }
-    };
-
-    // Informacion de docentes que dan el curso
-    const obtenerDocentesPorCurso = async () => {
-        try {
-            console.log(`${API_URL}`)
-            const res = await axios.get(`${API_URL}${horarioCursoEndpoint}${docentesEndpoint}`);
-            setCursoDocente(res.data[0]);
-        } catch (err) {
-            setError("Error al obtener docentes del curso");
-            return [];
-        }
-    };
+    //HACER CRUD CURSOS!!!!!!!!!!!!!!!!!!!!!!!!!!
+    //!!!!!!!!!!!!!!!!
 
     useEffect(() => {
         fetchCursos();
@@ -108,16 +87,17 @@ export function useCursos() {
 
     return {
         cursos,
+        cursoInfo,
         cursoDocente,
         cursoActual,
+        cursosAlumno,
         error,
         loading,
         fetchCursos,
-        buscarCursoPorId,
-        crearCurso,
-        editarCurso,
-        eliminarCurso,
-        inscribirseEnCurso,
-        obtenerDocentesPorCurso
+        CursoInfo,
+        getCursosAlumno,
+        inscribirEnCursoInfo,
+       
     };
 }
+

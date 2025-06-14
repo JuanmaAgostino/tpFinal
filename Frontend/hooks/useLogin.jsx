@@ -20,13 +20,13 @@ export function useLogin() {
       const usuario = res.data.usuario;
 
       // Redirección según rol
-      if (usuario.Rol === "alumno") {
+      if (usuario.Rol === "Alumno") {
         setUsuario(usuario);
         navigate(ALUMNOSPAGE);
-      } else if (usuario.Rol === "docente") {
+      } else if (usuario.Rol === "Docente") {
         setUsuario(usuario);
         navigate(DOCENTESPAGE);
-      } else if (usuario.Rol === "admin") {
+      } else if (usuario.Rol === "Admin") {
         setUsuario(usuario);
         navigate(ADMINPAGE);
       } else {

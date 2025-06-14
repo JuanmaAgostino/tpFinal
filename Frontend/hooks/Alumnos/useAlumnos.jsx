@@ -76,6 +76,7 @@ export function useAlumnos() {
         }
     };
 
+
     useEffect(() => {
         fetchAlumnos();
     }, []);
@@ -90,5 +91,6 @@ export function useAlumnos() {
         crearAlumno,
         editarAlumno,
         eliminarAlumno,
+        
     };
 }

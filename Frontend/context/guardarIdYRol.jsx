@@ -10,7 +10,7 @@ export const useUserStore = create((set) => ({
     rol: "",
     nombre: "",
 
-
+ //guardo luego del loguin
     setUsuario: (usuario) => {
         set({
             id: usuario.idUsuario,
