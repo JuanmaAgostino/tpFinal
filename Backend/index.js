@@ -3,6 +3,7 @@ const cors = require('cors');
 const mysql = require('mysql2');
 const app = express();
 const PORT = 3001;
+const tesoreroRoutes = require('./routes/tesoreroRoute');
 const cursoRoutes = require('./routes/cursoRoutes');
 const alumnosRoutes = require('./routes/alumnosRoutes');
 const alumnosCursosRoutes = require('./routes/cursoAlumnosRoutes');
@@ -17,7 +18,7 @@ const docenteCursoRoutes = require('./routes/docenteCursoRoutes');
 const horarioRoutes = require('./routes/horarioRoutes');
 app.use(cors());
 app.use(express.json());
-
+app.use('/', tesoreroRoutes);
 //todas las rutas de las peticiones al servidor
 //alumnos
 app.use("/",alumnosCursosRoutes);
