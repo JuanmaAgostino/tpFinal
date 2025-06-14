@@ -1,8 +1,10 @@
 import React from "react";
+import { useState } from "react";
 import { usePagosAlumnos } from "../../hooks/tesorero/usePagosAlumnos.jsx";
 
 export default function MainTesorero() {
-  const { datos, loading, error } = usePagosAlumnos();
+  const [filtro, setFiltro] = useState(""); // "" | "Pagado" | "Debe"
+  const { datos, loading, error } = usePagosAlumnos(filtro);
 
   if (loading) return <p>Cargando...</p>;
   if (error) return <p>{error}</p>;
@@ -10,6 +12,11 @@ export default function MainTesorero() {
   return (
     <div>
       <h2>Estado de Pagos de Alumnos</h2>
+        <select value={filtro} onChange={e => setFiltro(e.target.value)}>
+        <option value="">Todos</option>
+        <option value="Pagado">Pagado</option>
+        <option value="Debe">Debe</option>
+      </select>
       <table>
         <thead>
           <tr>
