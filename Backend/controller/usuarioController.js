@@ -19,4 +19,31 @@ const loginUsuario = (req, res) => {
     });
 };
 
-module.exports = { loginUsuario };
+// Crear usuario
+const crearUsuario = (req, res) => {
+    const { Usuario, Contraseña, Rol, Email } = req.body;
+    const query = "INSERT INTO usuarios (Usuario, Contraseña, Rol, Email) VALUES (?, ?, ?, ?)";
+    connection.query(query, [Usuario, Contraseña, Rol, Email], (err, result) => {
+        if (err) {
+            console.error("Error al crear usuario:", err);
+            return res.status(500).json({ error: "Error al crear usuario" });
+        }
+        res.status(201).json({ mensaje: "Usuario creado correctamente", idUsuario: result.insertId });
+    });
+};
+
+// Editar usuario
+const editarUsuario = (req, res) => {
+    const { id } = req.params;
+    const { Usuario, Contraseña } = req.body;
+    const query = "UPDATE usuarios SET Usuario = ?, Contraseña = ? WHERE idUsuario = ?";
+    connection.query(query, [Usuario, Contraseña, id], (err) => {
+        if (err) {
+            console.error("Error al actualizar usuario:", err);
+            return res.status(500).json({ error: "Error al actualizar usuario" });
+        }
+        res.json({ mensaje: "Usuario actualizado correctamente" });
+    });
+};
+
+module.exports = { loginUsuario, crearUsuario, editarUsuario };

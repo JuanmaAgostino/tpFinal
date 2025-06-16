@@ -6,8 +6,9 @@ import AlumnosCRUDPage from '../pages/AlumnosCRUDPage';
 import LoginPage from "../pages/LoginPage";
 import AlumnosMainPage from "../pages/AlumnosMainPage";
 import DocenteMainPage from "../pages/DocenteMainPage";
+import SecretarioCrudPage from "../pages/SecretarioCrudPage.jsx";
 //importo las rutas
-import { ALUMNOSPAGE, LOGINPAGE, CRUDALUMNOS, DOCENTESPAGE, ADMINPAGE, TESOREROPAGE } from '../routes/rutas';
+import { ALUMNOSPAGE, LOGINPAGE, CRUDALUMNOS, DOCENTESPAGE, ADMINPAGE, TESOREROPAGE, SECRETARIOCRUDPAGE } from '../routes/rutas';
 import TesoreroPage from "../pages/TesoreroPage.jsx";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path={ALUMNOSPAGE} element={<AlumnosMainPage />} />
           <Route path={ADMINPAGE} element={<AdminMainPage />} />
           <Route path={TESOREROPAGE} element={<TesoreroPage />} />
+          <Route path={SECRETARIOCRUDPAGE} element={<SecretarioCrudPage />} />
         </Routes>
       </BrowserRouter>
     </div>
