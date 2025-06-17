@@ -21,29 +21,29 @@ app.use(express.json());
 app.use('/', tesoreroRoutes);
 //todas las rutas de las peticiones al servidor
 //alumnos
-app.use("/",alumnosCursosRoutes);
-app.use("/",alumnosRoutes);
+app.use("/", alumnosCursosRoutes);
+app.use("/", alumnosRoutes);
 //cursos
-app.use("/",cursoRoutes);
-app.use("/",cursoinfoRoutes);
-app.use("/",horarioCursoRoutes);
-app.use("/",horarioRoutes);
+app.use("/", cursoRoutes);
+app.use("/", cursoinfoRoutes);
+app.use("/", horarioCursoRoutes);
+app.use("/", horarioRoutes);
 
 //usuarios
-app.use("/usuarios",usuariosRoutes);
+app.use("/usuarios", usuariosRoutes);
 //docente
-app.use("/",docenteRoutes);
+app.use("/", docenteRoutes);
 
 //docente_curso
-app.use("/docente-curso",docenteCursoRoutes);
+app.use("/docente_curso", docenteCursoRoutes);
 
 //inscripcion
-app.use("/",inscripcionRoutes);
-app.use("/",docenteCursoRoutes);
+app.use("/", inscripcionRoutes);
+app.use("/", docenteCursoRoutes);
 //pago
-app.use("/",pagoRoutes);
+app.use("/", pagoRoutes);
 //asistencia
-app.use("/",asistenciaRoutes);
+app.use("/", asistenciaRoutes);
 
 //muestro un mensaje que el servidor esta funcionando
 app.get('/', (req, res) => {

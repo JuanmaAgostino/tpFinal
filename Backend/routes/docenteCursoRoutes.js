@@ -1,14 +1,14 @@
-const express = require ('express');
+const express = require('express');
 const router = express.Router();
-const {mostrarDocenteCurso} = require ('../controller/docenteCursoController');
+const { listarCursos, listarAsistencias, actualizarAsistencia } = require('../controller/docenteCursoController');
 
-//rutas de los distintas cosas que puedo hacer con los docentes y cursos
+// Listar cursos de un docente
+router.post("/listarCursos", listarCursos);
 
-// /alumnos es el nombre de la tabla a la que quiero ingresar
+// Listar asistencias de un curso
+router.post("/listarAsistencias", listarAsistencias);
 
-router.get("/alumnos", mostrarDocenteCurso); //Muestro todos los docentes y cursos
-
-
-
+// Actualizar asistencia
+router.put("/actualizarAsistencia", actualizarAsistencia);
 
 module.exports = router;

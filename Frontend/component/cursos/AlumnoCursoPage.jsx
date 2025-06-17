@@ -10,7 +10,7 @@ export default function CursoPage() {
     CursoInfo,
     inscribirEnCursoInfo,
     cursosAlumno,
-    getCursosAlumno // 👈 la función correcta
+    getCursosAlumno 
   } = useCursos();
 
   const { id } = useUserStore();

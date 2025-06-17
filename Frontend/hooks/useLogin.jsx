@@ -33,8 +33,7 @@ export function useLogin() {
         setError("Rol desconocido");
       }
 
-      // Guardar usuario en localStorage si se desea
-      localStorage.setItem("usuario", JSON.stringify(usuario));
+
     } catch (err) {
       console.error("Error al iniciar sesión:", err.response?.data || err.message);
       setError("Usuario o contraseña incorrectos");
