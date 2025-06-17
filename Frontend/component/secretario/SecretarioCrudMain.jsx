@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSecretario } from "../../hooks/Secretario/useSecretario";
+import axios from "axios";
+import { localhost, alumnosEndpoint, usuariosEndpoint } from "../../routes/rutas";
 
 export default function SecretarioCrudMain() {
   const {
@@ -22,6 +24,9 @@ export default function SecretarioCrudMain() {
   const [editando, setEditando] = useState(null); // { idAlumno, idUsuario }
   const [formUsuario, setFormUsuario] = useState({ Usuario: "", Contraseña: "", Email: "" });
   const [formAlumno, setFormAlumno] = useState({ nombre: "", apellido: "", Legajo: "" });
+
+  // Buscador por legajo
+  const [busquedaLegajo, setBusquedaLegajo] = useState("");
 
   useEffect(() => {
     fetchAlumnosConUsuarios();
@@ -62,6 +67,24 @@ export default function SecretarioCrudMain() {
       fetchAlumnosConUsuarios();
     }
   };
+
+  // Eliminar usuario y alumno juntos
+  const handleEliminar = async (idAlumno, idUsuario) => {
+    if (!window.confirm("¿Seguro que deseas eliminar este alumno y su usuario?")) return;
+    try {
+      await axios.delete(`${localhost}${alumnosEndpoint}/${idAlumno}`);
+      await axios.delete(`${localhost}${usuariosEndpoint}/${idUsuario}`);
+      fetchAlumnosConUsuarios();
+    } catch (err) {
+      alert("Error al eliminar alumno y usuario");
+    }
+  };
+
+  // Filtrado por legajo
+  const alumnosFiltrados = alumnosConUsuarios.filter(a =>
+    !busquedaLegajo ||
+    (a.Legajo && a.Legajo.toString().includes(busquedaLegajo))
+  );
 
   return (
     <div>
@@ -124,11 +147,20 @@ export default function SecretarioCrudMain() {
       )}
 
       <h3>Listado de Alumnos y Usuarios</h3>
+      {/* Buscador por legajo */}
+      <input
+        type="text"
+        placeholder="Buscar por Legajo"
+        value={busquedaLegajo}
+        onChange={e => setBusquedaLegajo(e.target.value)}
+        style={{ marginBottom: "10px" }}
+      />
       <ul>
-        {alumnosConUsuarios.map((a) => (
+        {alumnosFiltrados.map((a) => (
           <li key={a.idAlumno}>
             {a.nombre} {a.apellido} - Legajo: {a.Legajo} - Usuario: {a.Usuario} - Email: {a.Email}
             <button onClick={() => handleEditar(a)}>Editar</button>
+            <button onClick={() => handleEliminar(a.idAlumno, a.idUsuario)}>Eliminar</button>
           </li>
         ))}
       </ul>

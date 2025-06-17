@@ -46,4 +46,17 @@ const editarUsuario = (req, res) => {
     });
 };
 
-module.exports = { loginUsuario, crearUsuario, editarUsuario };
+// Eliminar usuario
+const eliminarUsuario = (req, res) => {
+    const { id } = req.params;
+    const query = "DELETE FROM usuarios WHERE idUsuario = ?";
+    connection.query(query, [id], (err, results) => {
+        if (err) {
+            console.error("Error al eliminar usuario:", err);
+            return res.status(500).json({ error: "Error al eliminar usuario" });
+        }
+        res.json({ mensaje: "Usuario eliminado correctamente" });
+    });
+};
+
+module.exports = { loginUsuario, crearUsuario, editarUsuario, eliminarUsuario };
