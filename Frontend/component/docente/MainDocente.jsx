@@ -95,12 +95,12 @@ export default function MainDocente() {
                   </button>
                   <button
                     onClick={async () => {
-                      await actualizarAsistencia(a.idAsistencia, "Ausente");
+                      await actualizarAsistencia(a.idAsistencia, "Libre");
                       fetchAsistencias(idDocente, cursoSeleccionado);
                     }}
                     style={{ marginLeft: "10px" }}
                   >
-                    Ausente
+                    Libre
                   </button>
                 </td>
               </tr>
