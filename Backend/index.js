@@ -16,10 +16,13 @@ const docenteRoutes = require('./routes/docenteRoutes');
 const asistenciaRoutes = require('./routes/asistenciaRoutes');
 const docenteCursoRoutes = require('./routes/docenteCursoRoutes');
 const horarioRoutes = require('./routes/horarioRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 app.use(cors());
 app.use(express.json());
 app.use('/', tesoreroRoutes);
 //todas las rutas de las peticiones al servidor
+//admin
+app.use('/admin', adminRoutes); 
 //alumnos
 app.use("/", alumnosCursosRoutes);
 app.use("/", alumnosRoutes);
