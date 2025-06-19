@@ -21,7 +21,7 @@ export default function AdminAlumnosCrud() {
 
   return (
     <div>
-      <h2>CRUD Alumnos</h2>
+      <h2>Administracion de alumnos</h2>
       {loading && <p>Cargando...</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}
       <ul>

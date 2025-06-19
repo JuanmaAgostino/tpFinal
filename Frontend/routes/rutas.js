@@ -6,7 +6,10 @@ export const LOGINPAGE = "/";
 export const ADMINPAGE = "/AdminPage";
 export const TESOREROPAGE = "/TesoreroPage";
 export const SECRETARIOCRUDPAGE = "/SecretarioCRUD";
-
+export const ADMINALUMNOS = "/AdminAlumnos";
+export const ADMINCURSOS = "/AdminCursos";
+export const ADMINMAINPAGE = "/AdminMainPague";
+export const ADMINDOCENTES = "/AdminDocentes";
 //ruta localhost
 export const localhost = "http://localhost:3001"
 
