@@ -1,0 +1,56 @@
+.admin-docentes-container {
+	max-width: 800px;
+	margin: 3rem auto;
+	background-color: #f8f9fa;
+	padding: 2rem;
+	border-radius: 1rem;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.admin-docentes-container h2 {
+	text-align: center;
+	margin-bottom: 2rem;
+	color: #003366; /* Azul técnico institucional */
+}
+
+.admin-docentes-container form {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.admin-docentes-container input {
+	padding: 0.5rem 1rem;
+	border: 1px solid #ced4da;
+	border-radius: 0.5rem;
+}
+
+.admin-docentes-container button {
+	width: fit-content;
+	padding: 0.5rem 1.2rem;
+	margin-top: 1rem;
+	border: none;
+	background-color: #003366;
+	color: white;
+	border-radius: 0.5rem;
+	transition: background-color 0.3s;
+}
+
+.admin-docentes-container button:hover {
+	background-color: #00509e;
+}
+
+.docente-item {
+	background-color: white;
+	padding: 1rem;
+	border-radius: 0.5rem;
+	margin-bottom: 1rem;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.docente-item button {
+	margin-left: 0.5rem;
+}
