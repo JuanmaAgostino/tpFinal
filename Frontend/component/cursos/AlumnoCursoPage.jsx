@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useCursos } from "../../hooks/cursos/useCursos";
 import { useUserStore } from "../../context/guardarIdYRol";
+import "../../styles/Alumno.css"; // Importa tus estilos CSS
 
 export default function CursoPage() {
   const {
@@ -16,7 +17,6 @@ export default function CursoPage() {
   const { id } = useUserStore();
   const idUsuario = id;
 
-  // Cargar info de cursos y cursos del alumno al montar
   useEffect(() => {
     CursoInfo();
     if (idUsuario) {
@@ -25,18 +25,23 @@ export default function CursoPage() {
   }, [idUsuario]);
 
   return (
-    <div>
+    <main className="main-alumno">
+
+    
+    <div className="main-container">
       <div>
-        <h2>Cursos en los que estás inscripto</h2>
+        <h2 className="title">Cursos en los que estás inscripto</h2>
         {cursosAlumno.length === 0 ? (
-          <p>No estás inscripto en ningún curso.</p>
+          <p className="info">No estás inscripto en ningún curso.</p>
         ) : (
-          <ul>
+          <ul className="alumno-list">
             {cursosAlumno.map((curso, index) => (
-              <li key={index}>
-                <strong>{curso.nombreCurso}</strong> - {curso.Titulo}
-                <br />
-                Desde: {new Date(curso.FechaInicio).toLocaleDateString()} Hasta: {new Date(curso.FechaFin).toLocaleDateString()}
+              <li key={index} className="alumno-item">
+                <div>
+                  <strong>{curso.nombreCurso}</strong> - {curso.Titulo}
+                  <br />
+                  Desde: {new Date(curso.FechaInicio).toLocaleDateString()} Hasta: {new Date(curso.FechaFin).toLocaleDateString()}
+                </div>
               </li>
             ))}
           </ul>
@@ -44,23 +49,25 @@ export default function CursoPage() {
       </div>
 
       <div>
-        <h2>Información de Cursos</h2>
-        {loading && <p>Cargando...</p>}
-        {error && <p style={{ color: "red" }}>Error: {error}</p>}
-        <ul>
+        <h2 className="section-title">Información de Cursos</h2>
+        {loading && <p className="info">Cargando...</p>}
+        {error && <p className="error">Error: {error}</p>}
+        <ul className="alumno-list">
           {cursoInfo.map((info, index) => (
-            <li key={`${info.idCursoInfo}-${index}`} style={{ marginBottom: "20px" }}>
-              <strong>{info.NombreCurso}</strong>
-              <br />Materias: {info.Materias}
-              <br />Título: {info.Titulo}
-              <br />Proyecto final: {info.Proyecto === 1 ? "Sí tiene" : "No tiene"}
-              <br />Fecha de inicio: {new Date(info.FechaInicio).toLocaleDateString()}
-              <br />Fecha de fin: {new Date(info.FechaFin).toLocaleDateString()}
-              <br />Hora de clase: {info.HoraClase}
+            <li key={`${info.idCursoInfo}-${index}`} className="alumno-item">
+              <div>
+                <strong>{info.NombreCurso}</strong>
+                <br />Materias: {info.Materias}
+                <br />Título: {info.Titulo}
+                <br />Proyecto final: {info.Proyecto === 1 ? "Sí tiene" : "No tiene"}
+                <br />Fecha de inicio: {new Date(info.FechaInicio).toLocaleDateString()}
+                <br />Fecha de fin: {new Date(info.FechaFin).toLocaleDateString()}
+                <br />Hora de clase: {info.HoraClase}
+              </div>
 
-              <div style={{ marginTop: "10px" }}>
+              <div className="button-group">
                 <button
-                  style={{ marginLeft: "10px" }}
+                  className="btn crear"
                   onClick={() => {
                     console.log("Voy a inscribir:", { idUsuario, idCursoInfo: info.idCursoInfo });
                     if (idUsuario) {
@@ -78,5 +85,7 @@ export default function CursoPage() {
         </ul>
       </div>
     </div>
+    </main>
   );
 }
+

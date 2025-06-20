@@ -1,0 +1,26 @@
+.footer-alumno {
+  background-color: #002f5f; /* Azul oscuro */
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: 'Georgia', serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-align: center;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo-footer {
+  width: 170px;
+  height: 100px;
+  background-image: url('../src/img/logo.jpg'); /* Ajusta la ruta según tu proyecto */
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 8px;
+}

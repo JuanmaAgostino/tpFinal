@@ -1,14 +1,13 @@
-import React from 'react'
-import '../../styles/HeaderYFooter.css'
-import fondoFooter from '../../src/img/fondo.jpg';
-const FooterAlumnos = () => {
-    return (
-        <div>
-           <footer style={{ backgroundImage: `url(${fondoFooter})` }}>
-      {/* contenido */}
-    </footer>
-        </div>
-    )
-}
+import React from 'react';
+import '../../styles/Footer.css'; // Asegúrate de que la ruta sea correcta
 
-export default FooterAlumnos
+const FooterAlumnos = () => {
+  return (
+    <footer className="footer-alumno">
+      <div className="logo-footer"></div>
+      <p>© Derechos reservados</p>
+    </footer>
+  );
+};
+
+export default FooterAlumnos;
