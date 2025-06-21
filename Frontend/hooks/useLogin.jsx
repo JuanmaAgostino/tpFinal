@@ -39,7 +39,7 @@ export function useLogin() {
         setError("Rol desconocido");
       }
 
-
+      // en caso de error muestro un mensaje
     } catch (err) {
       console.error("Error al iniciar sesión:", err.response?.data || err.message);
       setError("Usuario o contraseña incorrectos");
