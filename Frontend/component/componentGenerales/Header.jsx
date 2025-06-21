@@ -1,5 +1,4 @@
-import React from 'react'
-
+import React from 'react';
 import { useUserStore } from '../../context/guardarIdYRol';
 import { useNavigate } from "react-router-dom";
 import { LOGINPAGE } from '../../routes/rutas';
@@ -15,9 +14,14 @@ const HeaderAlumnos = () => {
     navigate(LOGINPAGE);
   };
 
+  const handleLogoClick = () => {
+    navigate(-1); // Retrocede a la página anterior
+  };
+
   return (
     <header className="header-alumno">
-      <div className="logo-alumno" />
+      {/* Hacemos que el logo sea clickeable */}
+      <div className="logo-alumno" onClick={handleLogoClick} style={{ cursor: 'pointer' }} />
       <button className="logout-btn" onClick={handleLogout}>Cerrar sesión</button>
     </header>
   );

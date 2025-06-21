@@ -1,11 +1,14 @@
 import React from 'react'
 import AdminMain from '../component/admin/AdminMain'
+import Header from '../component/componentGenerales/Header'
+import Footer from '../component/componentGenerales/Footer'
 
 const AdminMainPgue = () => {
   return (
     <div>
-        <h1>Bienvenido Admin</h1>
-               <AdminMain/>
+      <Header />
+      <AdminMain />
+      <Footer />
     </div>
   )
 }

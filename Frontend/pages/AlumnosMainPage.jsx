@@ -6,9 +6,9 @@ import MainAlumno from '../component/alumno/MainAlumnos'
 const AlumnosMainPage = () => {
   return (
     <>
-   
-    <MainAlumno/>
-    
+      <Header />
+      <MainAlumno />
+      <Footer />
     </>
   )
 }
