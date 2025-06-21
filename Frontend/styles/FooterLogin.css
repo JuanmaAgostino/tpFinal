@@ -1,0 +1,13 @@
+/* LoginFooter.css */
+
+.login-footer {
+  background-color: #002f5f; /* Azul oscuro igual al header */
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.95rem;
+  font-family: 'Georgia', serif;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}

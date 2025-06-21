@@ -1,0 +1,105 @@
+/* Fondo general para la página del alumno */
+.main-alumno {
+	margin: 0;
+	padding: 0;
+	font-family: 'Georgia', serif;
+
+	background-image: url('../src/img/fondo7.png'); /* Mantenemos imagen de fondo */
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	overflow-x: hidden;
+}
+
+/* Contenedor principal con fondo blanco translúcido */
+.main-container {
+	max-width: 900px;
+	width: 100%;
+	margin: 60px auto;
+	background-color: rgba(255, 255, 255, 0.92);
+	padding: 50px 60px;
+	border-radius: 12px;
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+	box-sizing: border-box;
+}
+
+/* Títulos de secciones */
+.title,
+.section-title {
+	color: #1a3e72;
+	font-weight: 700;
+	font-size: 2.2rem;
+	margin-bottom: 30px;
+	padding-bottom: 10px;
+	border-bottom: 2px solid #1a3e72;
+	font-family: 'Segoe UI', sans-serif;
+}
+
+/* Texto informativo y de error */
+.info {
+	font-style: italic;
+	color: #666;
+	font-size: 1.3rem;
+	margin-bottom: 30px;
+}
+
+.error {
+	color: #c62828;
+	font-weight: bold;
+	font-size: 1.3rem;
+	margin-bottom: 30px;
+}
+
+/* Lista de cursos */
+.alumno-list {
+	list-style: none;
+	padding-left: 0;
+	margin-bottom: 60px;
+}
+
+/* Elemento de curso */
+.alumno-item {
+	padding: 20px 0;
+	font-size: 1.3rem;
+	line-height: 1.7;
+	border-bottom: 1px solid #ccc;
+}
+
+.alumno-item:last-child {
+	border-bottom: none;
+}
+
+.alumno-item strong {
+	color: #0b2e62;
+	font-weight: 700;
+}
+
+/* Botones */
+.button-group {
+	margin-top: 20px;
+}
+
+.btn {
+	background-color: #1a3e72;
+	color: #fff;
+	border: none;
+	border-radius: 6px;
+	padding: 12px 30px;
+	font-size: 1.1rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	box-shadow: 0 3px 6px rgba(26, 62, 114, 0.25);
+}
+
+.btn:hover {
+	background-color: #15315c;
+	transform: translateY(-2px);
+	box-shadow: 0 6px 12px rgba(22, 49, 90, 0.3);
+}

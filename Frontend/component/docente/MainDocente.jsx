@@ -1,66 +1,67 @@
-import React, { useEffect, useState } from "react";
-import { useDocentes } from "../../hooks/docentes/useDocentes";
-import { useUserStore } from "../../context/guardarIdYRol";
-import axios from "axios";
-import { localhost } from "../../routes/rutas";
+import React, { useEffect, useState } from 'react';
+import { useDocentes } from '../../hooks/docentes/useDocentes';
+import { useUserStore } from '../../context/guardarIdYRol';
+import axios from 'axios';
+import { localhost } from '../../routes/rutas';
+import '../../styles/DocentePage.css';
 
 export default function MainDocente() {
-  const idDocente = useUserStore.getState().id;
-  const [cursos, setCursos] = useState([]);
-  const [cursoSeleccionado, setCursoSeleccionado] = useState(null);
+	const idDocente = useUserStore.getState().id;
+	const [cursos, setCursos] = useState([]);
+	const [cursoSeleccionado, setCursoSeleccionado] = useState(null);
 
-  const {
-    asistencias,
-    loading,
-    error,
-    success,
-    fetchAsistencias,
-    actualizarAsistencia,
-  } = useDocentes();
+	const {
+		asistencias,
+		loading,
+		error,
+		success,
+		fetchAsistencias,
+		actualizarAsistencia,
+	} = useDocentes();
 
-  // Traer cursos cuando carga
-  useEffect(() => {
-    const fetchCursos = async () => {
-      try {
-        const res = await axios.post(`${localhost}/docente_curso/listarCursos`, {
-          idDocente,
-        });
-        setCursos(res.data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
+	// Traer cursos cuando carga
+	useEffect(() => {
+		const fetchCursos = async () => {
+			try {
+				const res = await axios.post(`${localhost}/docente_curso/listarCursos`, {
+					idDocente,
+				});
+				setCursos(res.data);
+			} catch (err) {
+				console.error(err);
+			}
+		};
 
-    fetchCursos();
-  }, [idDocente]);
+		fetchCursos();
+	}, [idDocente]);
 
-  // Traer asistencias al elegir curso
-  useEffect(() => {
-    if (cursoSeleccionado) {
-      fetchAsistencias(idDocente, cursoSeleccionado);
-    }
-  }, [cursoSeleccionado]);
+	// Traer asistencias al elegir curso
+	useEffect(() => {
+		if (cursoSeleccionado) {
+			fetchAsistencias(idDocente, cursoSeleccionado);
+		}
+	}, [cursoSeleccionado]);
 
-  return (
-    <div>
-      <h2>Asistencias del Docente</h2>
+	return (
+		<div className="docente-container">
+			<h2>Asistencias del Docente</h2>
 
-      <label>Selecciona un curso: </label>
-      <select
-        value={cursoSeleccionado || ""}
-        onChange={(e) => setCursoSeleccionado(e.target.value)}
-      >
-        <option value="">-- Selecciona --</option>
-        {cursos.map((curso) => (
-          <option key={curso.idCursoInfo} value={curso.idCursoInfo}>
-            {curso.nombreCurso}
-          </option>
-        ))}
-      </select>
+			<label>Selecciona un curso: </label>
+			<select
+				value={cursoSeleccionado || ''}
+				onChange={(e) => setCursoSeleccionado(e.target.value)}
+			>
+				<option value="">-- Selecciona --</option>
+				{cursos.map((curso) => (
+					<option key={curso.idCursoInfo} value={curso.idCursoInfo}>
+						{curso.nombreCurso}
+					</option>
+				))}
+			</select>
 
-      {loading && <p>Cargando...</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      {success && <p style={{ color: "green" }}>Actualización exitosa</p>}
+			{loading && <p>Cargando...</p>}
+			{error && <p style={{ color: 'red' }}>{error}</p>}
+			{success && <p style={{ color: 'green' }}>Actualización exitosa</p>}
 
       {asistencias.length === 0 && cursoSeleccionado ? (
         <p>No hay asistencias para este curso.</p>

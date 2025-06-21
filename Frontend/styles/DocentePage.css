@@ -1,0 +1,87 @@
+body {
+	font-family: 'Segoe UI', sans-serif;
+	background-color: #f9f9f9;
+	margin: 0;
+	padding: 0;
+}
+
+/* Contenedor principal */
+.docente-container {
+	max-width: 1000px;
+	margin: 40px auto;
+	background-color: #fff;
+	padding: 30px;
+	border-radius: 12px;
+	box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Título */
+.docente-container h2 {
+	color: #2c3e50;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+/* Selector de curso */
+.docente-container label {
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.docente-container select {
+	padding: 8px 12px;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	font-size: 14px;
+	margin-bottom: 20px;
+}
+
+/* Mensajes */
+.docente-container p {
+	margin-top: 10px;
+	font-size: 16px;
+}
+
+/* Tabla de asistencias */
+.docente-container table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+
+.docente-container th,
+.docente-container td {
+	padding: 10px;
+	text-align: left;
+	border: 1px solid #ddd;
+}
+
+.docente-container th {
+	background-color: #f0f0f0;
+	color: #333;
+}
+
+/* Botones */
+.docente-container button {
+	padding: 6px 12px;
+	border: none;
+	border-radius: 6px;
+	font-weight: bold;
+	cursor: pointer;
+	background-color: #3498db;
+	color: white;
+	transition: background-color 0.3s ease;
+}
+
+.docente-container button:hover {
+	background-color: #2980b9;
+}
+
+.docente-container button + button {
+	margin-left: 10px;
+	background-color: #e74c3c;
+}
+
+.docente-container button + button:hover {
+	background-color: #c0392b;
+}

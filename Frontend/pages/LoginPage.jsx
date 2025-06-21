@@ -1,16 +1,18 @@
 import React from 'react'
 import LoginUsuarios from '../component/usuarios/LoginUsuarios'
 import LoginHeader from '../component/login/LoginHeader'
-import Footer from '../component/componentGenerales/Footer'
+
+import LoginFooter from '../component/login/LoginFooter'
 
 const LoginPage = () => {
   return (
     <>
     <LoginHeader/>
     <LoginUsuarios/>
-    <Footer/>
+    <LoginFooter/>
     </>
   )
+
 }
 
 export default LoginPage

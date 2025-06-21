@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAlumnos } from "../../hooks/Alumnos/useAlumnos";
 
+
 export default function MainAlumno() {
   const {
     alumnos,
@@ -18,14 +19,13 @@ export default function MainAlumno() {
   const [modoEdicion, setModoEdicion] = useState(false);
   const [idEditando, setIdEditando] = useState(null);
 
-
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+
     if (modoEdicion) {
       editarAlumno(idEditando, form);
       setModoEdicion(false);
@@ -33,56 +33,56 @@ export default function MainAlumno() {
     } else {
       crearAlumno(form);
     }
-  
-    setForm({ nombre: "", apellido: "", Legajo: "", });
+
+    setForm({ nombre: "", apellido: "", Legajo: "" });
   };
-  
 
   return (
-    <div>
-      <h2>Listado de Alumnos</h2>
-      {loading && <p>Cargando...</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>}
+    <div className="main-container">
+      <h2 className="title">Listado de Alumnos</h2>
 
-      <ul>
+      {loading && <p className="info">Cargando...</p>}
+      {error && <p className="error">{error}</p>}
+
+      <ul className="alumno-list">
         {alumnos.map((a) => (
-          <li key={a.idAlumno}>
-            {a.nombre} - {a.apellido} - {a.Legajo} 
-            <button onClick={() => eliminarAlumno(a.idAlumno)}>Eliminar</button>
-            <button onClick={() => {
-              setForm({ nombre: a.nombre, apellido: a.apellido, Legajo: a.Legajo });
-              setIdEditando(a.idAlumno);
-              setModoEdicion(true);
-            }}>
-              Editar
-            </button>
+          <li key={a.idAlumno} className="alumno-item">
+            <span>{a.nombre} - {a.apellido} - {a.Legajo}</span>
+            <div className="button-group">
+              <button className="btn eliminar" onClick={() => eliminarAlumno(a.idAlumno)}>Eliminar</button>
+              <button className="btn editar" onClick={() => {
+                setForm({ nombre: a.nombre, apellido: a.apellido, Legajo: a.Legajo });
+                setIdEditando(a.idAlumno);
+                setModoEdicion(true);
+              }}>
+                Editar
+              </button>
+            </div>
           </li>
         ))}
       </ul>
 
-
-      <h3>➕ Crear nuevo alumno</h3>
-      <form onSubmit={handleSubmit}>
-        <input name="nombre" placeholder="Nombre" value={form.nombre} onChange={handleChange} />
-        <input name="apellido" placeholder="apellido" value={form.apellido} onChange={handleChange} />
-        <input name="Legajo" type="number" placeholder="Legajo" value={form.Legajo} onChange={handleChange} />
-         <input name="idUsuario" placeholder="idUsuario" value={form.apellido} onChange={handleChange} />
-        <button type="submit">Crear</button>
+      <h3 className="section-title">➕ Crear nuevo alumno</h3>
+      <form className="form" onSubmit={handleSubmit}>
+        <input className="input" name="nombre" placeholder="Nombre" value={form.nombre} onChange={handleChange} />
+        <input className="input" name="apellido" placeholder="Apellido" value={form.apellido} onChange={handleChange} />
+        <input className="input" name="Legajo" type="number" placeholder="Legajo" value={form.Legajo} onChange={handleChange} />
+        <button className="btn crear" type="submit">{modoEdicion ? "Guardar cambios" : "Crear"}</button>
       </form>
 
-      <h3>🔍 Buscar alumno por ID</h3>
-      <input type="text" placeholder="ID" value={idBuscar} onChange={(e) => setIdBuscar(e.target.value)} />
-      <button onClick={() => buscarAlumnoPorId(idBuscar)}>Buscar</button>
+      <h3 className="section-title">🔍 Buscar alumno por ID</h3>
+      <div className="buscar-box">
+        <input className="input" type="text" placeholder="ID" value={idBuscar} onChange={(e) => setIdBuscar(e.target.value)} />
+        <button className="btn buscar" onClick={() => buscarAlumnoPorId(idBuscar)}>Buscar</button>
+      </div>
 
       {alumnoActual && (
-        <div key={alumnoActual.idAlumno}>
+        <div className="alumno-actual">
           <h4>Alumno encontrado:</h4>
-          <p>
-            {alumnoActual.nombre} - {alumnoActual.apellido} - Legajo: {alumnoActual.Legajo}
-          </p>
+          <p>{alumnoActual.nombre} - {alumnoActual.apellido} - Legajo: {alumnoActual.Legajo}</p>
         </div>
       )}
-
     </div>
   );
 }
+

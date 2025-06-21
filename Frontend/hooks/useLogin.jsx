@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { ALUMNOSPAGE, DOCENTESPAGE, localhost, usuariosEndpoint, loginEndpoint } from "../routes/rutas";
+import { ALUMNOSPAGE, DOCENTESPAGE, ADMINPAGE,TESOREROPAGE,SECRETARIOCRUDPAGE,localhost, usuariosEndpoint, loginEndpoint } from "../routes/rutas";
 import { useUserStore } from "../context/guardarIdYRol";
 
 
@@ -29,7 +29,13 @@ export function useLogin() {
       } else if (usuario.Rol === "Admin") {
         setUsuario(usuario);
         navigate(ADMINPAGE);
-      } else {
+      }else if (usuario.Rol === "Tesorero") {
+        setUsuario(usuario);
+        navigate(TESOREROPAGE);
+      } else if (usuario.Rol === "Secretario") {
+        setUsuario(usuario);
+        navigate(SECRETARIOCRUDPAGE);
+      }else {
         setError("Rol desconocido");
       }
 

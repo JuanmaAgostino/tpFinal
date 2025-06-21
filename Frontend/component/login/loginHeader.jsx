@@ -1,11 +1,15 @@
-import React from 'react'
+import "../../styles/HeaderLogin.css"; 
+ 
+ 
+ const LoginHeader = () => {
+  return (
+    <div>
+      <header className="login-header">
+        <h1>Bienvenido</h1>
+        <h2>Inicia sesión para continuar</h2>
+      </header>
+    </div>
+  );
+};
 
-const LoginHeader = () => {
-    return (
-        //la diferencia entre el headerLogin y el header que usamos en el resto de las paginas
-        // es que no tiene un boton de cerrar sesión
-        <div><header><h1>header login</h1></header></div>
-    )
-}
-
-export default LoginHeader
+export default LoginHeader;
