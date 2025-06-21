@@ -1,16 +1,12 @@
-import React from 'react'
-import AlumnoCursoPage from '../cursos/AlumnoCursoPage'
-import Header from '../componentGenerales/Header'
-import Footer from '../componentGenerales/Footer'
+import React from 'react';
+import AlumnoCursoPage from '../cursos/AlumnoCursoPage';
 
 const MainAlumnos = () => {
-  return (
-    <div>
-      <Header />
-      <AlumnoCursoPage />
-      <Footer />
-    </div>
-  )
-}
+	return (
+		<div>
+			<AlumnoCursoPage />
+		</div>
+	);
+};
 
-export default MainAlumnos
+export default MainAlumnos;
