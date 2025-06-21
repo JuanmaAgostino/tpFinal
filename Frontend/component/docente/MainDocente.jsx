@@ -66,7 +66,7 @@ export default function MainDocente() {
 			{asistencias.length === 0 && cursoSeleccionado ? (
 				<p>No hay asistencias para este curso.</p>
 			) : (
-				<table>
+				<table border="1" cellPadding="8" cellSpacing="0">
 					<thead>
 						<tr>
 							<th>Legajo</th>
@@ -99,6 +99,7 @@ export default function MainDocente() {
 											await actualizarAsistencia(a.idAsistencia, 'Libre');
 											fetchAsistencias(idDocente, cursoSeleccionado);
 										}}
+										style={{ marginLeft: '10px' }}
 									>
 										Libre
 									</button>

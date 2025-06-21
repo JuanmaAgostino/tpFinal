@@ -5,7 +5,9 @@ import MainAlumno from '../component/alumno/MainAlumnos';
 const AlumnosMainPage = () => {
 	return (
 		<>
+			<Header />
 			<MainAlumno />
+			<Footer />
 		</>
 	);
 };

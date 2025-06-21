@@ -15,6 +15,23 @@
 	padding: 40px;
 }
 
+.admin-main-buttons button {
+  background-color: #011b36;
+  color: white;
+  border: none;
+  padding: 20px 40px;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s; /* añadí transición para sombra */
+  /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); */ /* removido */
+}
+
+.admin-main-buttons button:hover {
+  background-color: #00509e;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.727); /* sombra visible en hover */
+}
+
 .admin-main-title {
 	font-size: 40px;
 	color: #003366;

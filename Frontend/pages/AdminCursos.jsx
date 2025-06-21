@@ -1,10 +1,15 @@
 import React from 'react'
 import AdminCursoCrud from '../component/admin/AdminCursoCrud'
+import Header from '../component/componentGenerales/Header'
+import Footer from '../component/componentGenerales/Footer' 
+
+
 const AdminCursos = () => {
   return (
     <div>
-      <h1>Administrar Cursos</h1>
+      <Header />
       <AdminCursoCrud />
+      <Footer />
     </div>
   )
 }
