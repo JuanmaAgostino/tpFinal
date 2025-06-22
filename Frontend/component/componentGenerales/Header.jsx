@@ -2,6 +2,7 @@ import React from 'react';
 import { useUserStore } from '../../context/guardarIdYRol';
 import { useNavigate } from "react-router-dom";
 import { LOGINPAGE } from '../../routes/rutas';
+import { Link } from 'react-router-dom';
 import '../../styles/Header.css'; // Estilos externos
 
 const HeaderAlumnos = () => {
@@ -20,10 +21,20 @@ const HeaderAlumnos = () => {
 
   return (
     <header className="header-alumno">
-      {/* Hacemos que el logo sea clickeable */}
-      <div className="logo-alumno" onClick={handleLogoClick} style={{ cursor: 'pointer' }} />
-      <button className="logout-btn" onClick={handleLogout}>Cerrar sesión</button>
+      <div className="logo-alumno-container">
+        <div className="logo-alumno" onClick={handleLogoClick} style={{ cursor: 'pointer' }} />
+        <Link to="/" className="inicio-link">Ir al inicio</Link>
+      </div>
+
+      <div className="titulo-container">
+        <p className="titulo-header">SmartLab Educación Digital</p>
+      </div>
+
+      <div className="logout-container">
+        <button className="logout-btn" onClick={handleLogout}>Cerrar sesión</button>
+      </div>
     </header>
+
   );
 };
 
