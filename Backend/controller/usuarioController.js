@@ -59,4 +59,20 @@ const eliminarUsuario = (req, res) => {
     });
 };
 
-module.exports = { loginUsuario, crearUsuario, editarUsuario, eliminarUsuario };
+const listarSecretarios = (req, res) => {
+    const query = "SELECT * FROM Usuarios WHERE Rol = 'Secretario'";
+    connection.query(query, (err, results) => {
+        if (err) return res.status(500).json({ error: "Error al obtener secretarios" });
+        res.json(results);
+    });
+};
+
+const listarTesoreros = (req, res) => {
+    const query = "SELECT * FROM usuarios WHERE Rol = 'Tesorero'";
+    connection.query(query, (err, results) => {
+        if (err) return res.status(500).json({ error: "Error al obtener tesoreros" });
+        res.json(results);
+    });
+};
+
+module.exports = { loginUsuario, crearUsuario, editarUsuario, eliminarUsuario, listarSecretarios, listarTesoreros };

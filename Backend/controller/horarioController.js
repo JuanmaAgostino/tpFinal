@@ -1,25 +1,35 @@
 const { connection } = require('../DataBase/DB');
 
-//funcion para pedir todo de la tabla horario
-const mostrarHorario = (req, res) => {
+const listarHorarios = (req, res) => {
+  connection.query("SELECT * FROM horario", (err, results) => {
+    if (err) return res.status(500).json({ error: "Error al obtener horarios" });
+    res.json(results);
+  });
+};
 
-    //consulta sql que trae todo de la tabla horario
-    const query = "SELECT * FROM tpfinal.horario;";
+const crearHorario = (req, res) => {
+  const { horario } = req.body;
+  connection.query("INSERT INTO horario (horario) VALUES (?)", [horario], (err, result) => {
+    if (err) return res.status(500).json({ error: "Error al crear horario" });
+    res.status(201).json({ mensaje: "Horario creado", id: result.insertId });
+  });
+};
 
-    //mostramos lo que devuelve la conexion
-    connection.query(query, (err, results) => {
-        console.log("resultados de la consulta: ", results)
-        if (err) {
-            console.error("Error al obtener los horarios: ", err);
-            return res.status(500).json({ error: "Error al obtener los horarios" });
-        }
-        //devuelvo los resultados de la query de la tabla
-        res.json(results);
-    }
-    )
-    
-}
+const editarHorario = (req, res) => {
+  const { id } = req.params;
+  const { horario } = req.body;
+  connection.query("UPDATE horario SET horario=? WHERE idHorario=?", [horario, id], (err) => {
+    if (err) return res.status(500).json({ error: "Error al editar horario" });
+    res.json({ mensaje: "Horario actualizado" });
+  });
+};
 
+const eliminarHorario = (req, res) => {
+  const { id } = req.params;
+  connection.query("DELETE FROM horario WHERE idHorario=?", [id], (err) => {
+    if (err) return res.status(500).json({ error: "Error al eliminar horario" });
+    res.json({ mensaje: "Horario eliminado" });
+  });
+};
 
-//exporto los resultados de las consultas
-module.exports = { mostrarHorario }
+module.exports = { listarHorarios, crearHorario, editarHorario, eliminarHorario };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ADMINALUMNOS, ADMINCURSOS, ADMINDOCENTES } from '../../routes/rutas';
+import { ADMINALUMNOS, ADMINCURSOS, ADMINDOCENTES, ADMINHORARIOS, ADMINSECRETARIOS, ADMINTESOREROS } from '../../routes/rutas';
 import '../../styles/AdminMain.css';
 
 const AdminMain = () => {
@@ -17,6 +17,9 @@ const AdminMain = () => {
 					<button onClick={() => navigate(ADMINALUMNOS)}>Alumnos</button>
 					<button onClick={() => navigate(ADMINCURSOS)}>Cursos</button>
 					<button onClick={() => navigate(ADMINDOCENTES)}>Docentes</button>
+					<button onClick={() => navigate(ADMINHORARIOS)}>Horarios</button>
+					<button onClick={() => navigate(ADMINSECRETARIOS)}>Secretarios</button>
+					<button onClick={() => navigate(ADMINTESOREROS)}>Tesoreros</button>
 				</div>
 			</div>
 

@@ -9,8 +9,7 @@ const obtenerEstadoPagosAlumnos = (req, res) => {
       alumno.apellido AS apellidoAlumno,
       alumno.Legajo,
       curso.Nombre AS nombreCurso,
-      IF(pago.idPago IS NOT NULL, 'Pagado', 'Debe') AS estadoPago,
-      pago.metodoPago
+      IF(pago.idPago IS NOT NULL, 'Pagado', 'Debe') AS estadoPago
     FROM alumno
     JOIN curso_alumnos ON alumno.idAlumno = curso_alumnos.idAlumno
     JOIN curso_info ON curso_alumnos.idCursoInfo = curso_info.idCursoInfo
@@ -18,6 +17,8 @@ const obtenerEstadoPagosAlumnos = (req, res) => {
     LEFT JOIN inscripcion ON curso_alumnos.idCursoAlumno = inscripcion.idCursoAlumno
     LEFT JOIN pago ON inscripcion.idPago = pago.idPago
   `;
+
+  
 
   if (estado === "Pagado" || estado === "Debe") {
     query += ` HAVING estadoPago = '${estado}'`;

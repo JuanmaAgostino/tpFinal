@@ -10,11 +10,14 @@ export const ADMINALUMNOS = "/AdminAlumnos";
 export const ADMINCURSOS = "/AdminCursos";
 export const ADMINMAINPAGE = "/AdminMainPague";
 export const ADMINDOCENTES = "/AdminDocentes";
+export const ADMINHORARIOS = "/AdminHorarios";
+export const ADMINSECRETARIOS = "/AdminSecretarios";
+export const ADMINTESOREROS = "/AdminTesoreros";
+
 //ruta localhost
 export const localhost = "http://localhost:3001"
 
 //ruta endpoints
-
 export const alumnosEndpoint = "/alumnos"
 export const usuariosEndpoint = "/usuarios"
 export const loginEndpoint = "/login"

@@ -10,9 +10,16 @@ import LoginPage from "../pages/LoginPage";
 import AlumnosMainPage from "../pages/AlumnosMainPage";
 import DocenteMainPage from "../pages/DocenteMainPage";
 import SecretarioCrudPage from "../pages/SecretarioCrudPage.jsx";
+
+import AdminHorariosPage from "../pages/AdminHorariosPage";
+import AdminSecretariosPage from "../pages/AdminSecretariosPage.jsx";
+import AdminTesorerosPage from "../pages/AdminTesorerosPage.jsx";
+
 //importo las rutas
-import { ALUMNOSPAGE, LOGINPAGE, CRUDALUMNOS, DOCENTESPAGE, ADMINPAGE, TESOREROPAGE, SECRETARIOCRUDPAGE, ADMINALUMNOS, ADMINCURSOS, ADMINDOCENTES, ADMINMAINPAGE } from '../routes/rutas';
+import { ALUMNOSPAGE, LOGINPAGE, CRUDALUMNOS, DOCENTESPAGE, ADMINPAGE, TESOREROPAGE, SECRETARIOCRUDPAGE, ADMINALUMNOS, ADMINCURSOS, ADMINDOCENTES, ADMINMAINPAGE} from '../routes/rutas';
 import TesoreroPage from "../pages/TesoreroPage.jsx";
+
+import { ADMINHORARIOS, ADMINSECRETARIOS, ADMINTESOREROS } from "../routes/rutas";
 
 function App() {
   return (
@@ -30,6 +37,9 @@ function App() {
           <Route path={ADMINCURSOS} element={<AdminCursos />} />
           <Route path={ADMINDOCENTES} element={<AdminDocentes />} />  
           <Route path={ADMINMAINPAGE} element={<AdminMainPage />} />
+          <Route path={ADMINHORARIOS} element={<AdminHorariosPage />} />
+          <Route path={ADMINSECRETARIOS} element={<AdminSecretariosPage />} />
+          <Route path={ADMINTESOREROS} element={<AdminTesorerosPage />} />
         </Routes>
       </BrowserRouter>
     </div>

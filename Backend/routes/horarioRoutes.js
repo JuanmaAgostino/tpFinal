@@ -1,12 +1,16 @@
 const express = require ('express');
 const router = express.Router();
-const {mostrarHorario} = require ('../controller/horarioController');
+const { listarHorarios, crearHorario, editarHorario, eliminarHorario } = require('../controller/horarioController');
 
-//rutas de los distintas cosas que puedo hacer con los alumnos
+// Rutas para manejar los horarios
+// Estas rutas permiten listar, crear, editar y eliminar horarios
 
-// /alumnos es el nombre de la tabla a la que quiero ingresar
+router.get("/horarios", listarHorarios);
+router.post("/horarios", crearHorario);
+router.put("/horarios/:id", editarHorario);
+router.delete("/horarios/:id", eliminarHorario);
 
-router.get("/horario", mostrarHorario); //Muestro todos los alumnos
+router.get("/horario", listarHorarios);
 
 
 
